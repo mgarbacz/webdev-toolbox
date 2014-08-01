@@ -48,6 +48,7 @@
 
   figure span.marker-arm {
     background-color: #8f9bff;
+    -webkit-transform-origin: left top;
     transform-origin: left top;
     position: absolute;
     top: 100%;
@@ -61,18 +62,22 @@
     left: 0;
   }
   figure span.marker-left.marker-down span.marker-arm {
+    -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
   }
   figure span.marker-left.marker-up span.marker-arm {
+    -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
     margin-left: -1px;
   }
   figure span.marker-right.marker-down span.marker-arm {
+    -webkit-transform: rotate(135deg);
     transform: rotate(135deg);
     margin-left: 1px;
     margin-top: 1px;
   }
   figure span.marker-right.marker-up span.marker-arm {
+    -webkit-transform: rotate(-135deg);
     transform: rotate(-135deg);
     margin-right: 1px;
     margin-top: 1px;
