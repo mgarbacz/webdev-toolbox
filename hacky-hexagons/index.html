@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <style>
+    html, body, h2, a {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+    }
+    html, body {
+      background-color: #fafafa;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+    a {
+      text-decoration: none;
+      color: #888844;
+      display: block;
+    }
+    #div-foreground {
+      max-width: 944px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+    #hex-container {
+      width: 811px;
+      height: 304px;
+      margin: 0 auto;
+    }
+    .hex {
+      margin-top: 30px;
+      margin-left: 2px;
+      margin-bottom: 2px;
+      width: 104px;
+      height: 60px;
+      background-color: #333333;
+      position: relative;
+      float: left;
+      z-index: 1;
+    }
+    .hex:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-bottom: 30px solid #333333;
+      border-left: 52px solid transparent;
+      border-right: 52px solid transparent;
+      position: absolute;
+      top: -30px;
+      z-index: 10;
+    }
+    .hex:after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 30px solid #333333;
+      border-left: 52px solid transparent;
+      border-right: 52px solid transparent;
+      position: absolute;
+      bottom: -30px;
+      z-index: 10;
+    }
+    .hex-image {
+      background-color: #fafafa;
+      z-index: 0;
+    }
+    .hex-image:before {
+      border-bottom-color: transparent;
+      border-left-color: #fafafa;
+      border-right-color: #fafafa;
+    }
+    .hex-image:after {
+      border-top-color: transparent;
+      border-left-color: #fafafa;
+      border-right-color: #fafafa;
+    }
+    .hex-image img {
+      position: absolute;
+      top: -30px;
+      bottom: -30px;
+      width: auto;
+      height: 120px;
+      margin-left: -8px;
+      z-index: 1;
+      clip: rect(0, 112px, 120px, 8px);
+    }
+    .hex-text h2 {
+      text-align: center;
+      line-height: 60px;
+    }
+    .hex-offset {
+      margin-left: 55px;
+    }
+    .hex-right:before, .hex-right:after {
+      border-left: none;
+      border-right-width: 51px;
+    }
+    .hex-left:before, .hex-left:after {
+      border-right: none;
+      border-left-width: 51px;
+    }
+    .show-small,
+    .show-medium {
+      display: none;
+    }
+    @media all and (max-width: 832px) {
+      .hide-medium {
+        display: none;
+      }
+      .show-medium {
+        display: initial;
+      }
+      #hex-container {
+        width: 540px;
+      }
+      #div-foreground {
+        padding: 20px 10px;
+      }
+      .float {
+        float: none;
+      }
+    }
+    @media all and (max-width: 567px) {
+      .hide-small {
+        display: none;
+      }
+      .show-small {
+        display: initial;
+      }
+      #hex-container {
+        width: 324px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="div-foreground">
+    <div id="hex-container">
+      <div class="hex hex-offset hide-small"></div>
+      <div class="hex hide-small"></div>
+      <div class="hex hide-small"></div>
+      <div class="hex hide-small"></div>
+      <div class="hex hide-small"></div>
+      <div class="hex hide-medium"></div>
+      <div class="hex hide-medium"></div>
+      <div class="hex hide-medium"></div>
+      <div class="hex hex-image hide-small">
+        <a href="#">
+          <img src="//gravatar.com/avatar/c1a1cb91d6709234ff0fed46b166e446.png">
+        </a>
+      </div>
+      <div class="hex hex-image hex-offset show-small">
+        <a href="#">
+          <img src="//gravatar.com/avatar/c1a1cb91d6709234ff0fed46b166e446.png">
+        </a>
+      </div>
+      <div class="hex hide-medium"></div>
+      <div class="hex show-small"></div>
+      <div class="hex hex-text">
+        <h2><a href="#">Projects</a></h2>
+      </div>
+      <div class="hex hex-text">
+        <h2><a href="#">Blog</a></h2>
+      </div>
+      <div class="hex hex-text">
+        <h2><a href="#">About</a></h2>
+      </div>
+      <div class="hex hide-medium"></div>
+      <div class="hex hex-offset"></div>
+      <div class="hex hide-small"></div>
+      <div class="hex hide-small"></div>
+      <div class="hex hide-medium"></div>
+      <div class="hex hide-medium"></div>
+      <div class="hex hide-medium"></div>
+      <div class="hex"></div>
+    </div>
+</body>
+</html>

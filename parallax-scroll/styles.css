@@ -1,0 +1,12 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-image: url('bg-clouds.png'), url('bg-stars.png'), url('bg-sky.png');
+  background-size: auto, auto, cover;
+  background-position: 2.5em top, -2.5em top, 50% 0;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
