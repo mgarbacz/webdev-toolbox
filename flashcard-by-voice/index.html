@@ -16,7 +16,7 @@
     }
     body {
       font-family: Helvetica, arial, sans-serif;
-      font-size: calc(64px + (128 - 64) * ((100vw - 300px) / (1600 - 300)));
+      font-size: calc(48px + (128 - 48) * ((100vw - 300px) / (1600 - 300)));
       color: #fafafa;
       background-color: #333333;
     }
@@ -58,7 +58,7 @@
   <div id="flashcard-container" class="flashcard">
     <div class="flashcard-inner">
       <div class="flashcard-front">
-        <p class="flashcard-question">What is the capital of Pennsylvania? </p>
+        <p class="flashcard-question">What is the capital of Pennsylvania?</p>
       </div>
       <div class="flashcard-back">
         <p class="flashcard-answer">Harrisburg</p>
@@ -109,7 +109,9 @@
 
       recognition.onresult = (event) => {
         const answer = event.results[0][0].transcript;
-        if (answer === 'Harrisburg') fcc.classList.toggle('flipped');
+        if (answer.includes('Harrisburg')) {
+          fcc.classList.toggle('flipped');
+        }
       };
 
       recognition.onspeechend = () => {
