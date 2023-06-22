@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+  <title>Webdev Toolbox | Flashcard By Voice</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <style>
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Helvetica, arial, sans-serif;
+      font-size: 128px;
+      color: #fafafa;
+      background-color: #333333;
+    }
+    .flashcard {
+      background-color: transparent;
+      height: 100%;
+      width: 100%;
+      perspective: 1000px;
+    }
+    .flashcard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .flashcard:hover .flashcard-inner {
+      transform: rotateX(180deg);
+    }
+    .flashcard-front, .flashcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+    .flashcard-front, .flashcard-back {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .flashcard-back {
+      transform: rotateX(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="flashcard">
+    <div class="flashcard-inner">
+      <div class="flashcard-front">
+        <p class="flashcard-question">What is the capital of Pennsylvania? </p>
+      </div>
+      <div class="flashcard-back">
+        <p class="flashcard-answer">Harrisburg</p>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    qnas = [{
+      q: 'What is the capital of Pennsylvania?',
+      a: 'Harrisburg'
+    }, {
+      q: 'What is the capital of California?',
+      a: 'Sacremento'
+    }, {
+      q: 'What is the capital of Illinois?',
+      a: 'Springfield'
+    }, {
+      q: 'What is the capital of Washington?',
+      a: 'Olympia'
+    }, {
+      q: 'What is the capital of New York?',
+      a: 'Albany'
+    }]
+  </script>
+</body>
+</html>
