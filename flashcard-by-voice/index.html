@@ -116,7 +116,7 @@
       }];
 
       fcc = document.getElementById('flashcard-container')
-      fcc.addEventListener('click', () => {
+      fcc.querySelector('.flashcard-front').addEventListener('click', () => {
         recognition.start();
       });
 
@@ -168,6 +168,9 @@
           transcript.innerHTML = answerString;
           window.setTimeout(() => {
             fcc.classList.toggle('flipped');
+            window.setTimeout(() => {
+              fcc.classList.toggle('flipped');
+            }, 1500);
           }, 1000);
         } else {
           transcript.textContent = answer;
