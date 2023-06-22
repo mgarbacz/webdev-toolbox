@@ -34,7 +34,7 @@
       transition: transform 0.8s;
       transform-style: preserve-3d;
     }
-    .flashcard:hover .flashcard-inner {
+    .flashcard.flipped .flashcard-inner {
       transform: rotateX(180deg);
     }
     .flashcard-front, .flashcard-back {
@@ -55,7 +55,7 @@
   </style>
 </head>
 <body>
-  <div class="flashcard">
+  <div id="flashcard-container" class="flashcard">
     <div class="flashcard-inner">
       <div class="flashcard-front">
         <p class="flashcard-question">What is the capital of Pennsylvania? </p>
@@ -66,22 +66,30 @@
     </div>
   </div>
   <script type="text/javascript">
-    qnas = [{
-      q: 'What is the capital of Pennsylvania?',
-      a: 'Harrisburg'
-    }, {
-      q: 'What is the capital of California?',
-      a: 'Sacremento'
-    }, {
-      q: 'What is the capital of Illinois?',
-      a: 'Springfield'
-    }, {
-      q: 'What is the capital of Washington?',
-      a: 'Olympia'
-    }, {
-      q: 'What is the capital of New York?',
-      a: 'Albany'
-    }]
+    document.addEventListener("DOMContentLoaded", function(event) {
+      qnas = [{
+        q: 'What is the capital of Pennsylvania?',
+        a: 'Harrisburg'
+      }, {
+        q: 'What is the capital of California?',
+        a: 'Sacremento'
+      }, {
+        q: 'What is the capital of Illinois?',
+        a: 'Springfield'
+      }, {
+        q: 'What is the capital of Washington?',
+        a: 'Olympia'
+      }, {
+        q: 'What is the capital of New York?',
+        a: 'Albany'
+      }];
+
+      fcc = document.getElementById('flashcard-container')
+      fcc.addEventListener('click', () => {
+        fcc.classList.toggle('flipped');
+      });
+
+    });
   </script>
 </body>
 </html>
