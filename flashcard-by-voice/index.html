@@ -86,9 +86,35 @@
 
       fcc = document.getElementById('flashcard-container')
       fcc.addEventListener('click', () => {
-        fcc.classList.toggle('flipped');
+        recognition.start();
+        // fcc.classList.toggle('flipped');
       });
 
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      const SpeechGrammarList =
+        window.SpeechGrammarList || window.webkitSpeechGrammarList;
+      const SpeechRecognitionEvent =
+        window.SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent;
+
+      const grammar = `#JSGC V1.0; grammar qna; public <qna> = Harrisburg;`;
+      const recognition = new SpeechRecognition();
+      const speechRecognitionList = new SpeechGrammarList();
+      speechRecognitionList.addFromString(grammar, 1);
+      recognition.grammars = speechRecognitionList;
+      recognition.continuous = false;
+      recognition.lang = "en-US";
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.onresult = (event) => {
+        const answer = event.results[0][0].transcript;
+        if (answer === 'Harrisburg') fcc.classList.toggle('flipped');
+      };
+
+      recognition.onspeechend = () => {
+        recognition.stop();
+      };
     });
   </script>
 </body>
