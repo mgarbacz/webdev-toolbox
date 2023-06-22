@@ -30,6 +30,9 @@
       color: #993333;
       animation: wrong 0.2s ease-in-out 0.2s 2;
     }
+    .answer-transcript .right-answer {
+      color: #339933;
+    }
     .flashcard-inner {
       position: relative;
       width: 100%;
@@ -152,10 +155,22 @@
       recognition.onresult = (event) => {
         const answer = event.results[0][0].transcript;
         console.log(event);
-        transcript.textContent = answer;
-        if (answer.includes('Harrisburg')) {
-          fcc.classList.toggle('flipped');
+
+        rightAnswerIndex = answer.indexOf('Harrisburg');
+
+        if (rightAnswerIndex > -1) {
+          correctAnswerLength = 'Harrisburg'.length;
+          beforeAnswerString = answer.substring(0,rightAnswerIndex);
+          rightAnswerString = answer.substring(rightAnswerIndex,rightAnswerIndex+correctAnswerLength);
+          afterAnswerString = answer.substring(rightAnswerIndex+correctAnswerLength,rightAnswerIndex+correctAnswerLength+answer.length-1)
+
+          answerString = `${beforeAnswerString}<span class="right-answer">${rightAnswerString}</span>${afterAnswerString}`;
+          transcript.innerHTML = answerString;
+          window.setTimeout(() => {
+            fcc.classList.toggle('flipped');
+          }, 1000);
         } else {
+          transcript.textContent = answer;
           transcript.classList.add('wrong-answer');
         }
       };
