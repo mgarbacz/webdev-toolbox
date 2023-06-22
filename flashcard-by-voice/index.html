@@ -62,22 +62,6 @@
     .flashcard-back {
       transform: rotateX(180deg);
     }
-    .pulse {
-      display: none;
-    }
-    .pulse.wrong-answer {
-      display: block;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      background: rgba(255, 0, 0, 1);
-      border-radius: 50%;
-      height: 1%;
-      width: 1%;
-      box-shadow: 0 0 0 0 rgba(255, 0, 0, 1);
-      transform: scale(1);
-      animation: pulse 2s infinite;
-    }
 
     @keyframes wrong {
       0% {
@@ -91,23 +75,6 @@
       }
       100% {
         margin-left: 0rem;
-      }
-    }
-    @keyframes pulse {
-      0% {
-        transform: scale(0.95);
-        background: rgba(255, 0, 0, 0.7);
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
-      }
-      70% {
-        transform: scale(100);
-        background: rgba(255, 0, 0, 0);
-        box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
-      }
-      100% {
-        transform: scale(0.95);
-        background: rgba(255, 0, 0, 0);
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
       }
     }
   </style>
@@ -126,7 +93,6 @@
       </div>
     </div>
   </div>
-  <div class="pulse"></div>
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function(event) {
       qnas = [{
@@ -179,7 +145,6 @@
         console.log(event);
         window.setTimeout(() => {
           transcript.textContent = 'Tap to speak answer';
-          //pulse.classList.remove('wrong-answer');
           transcript.classList.remove('wrong-answer');
         }, 1500);
       };
@@ -191,7 +156,6 @@
         if (answer.includes('Harrisburg')) {
           fcc.classList.toggle('flipped');
         } else {
-          //pulse.classList.add('wrong-answer');
           transcript.classList.add('wrong-answer');
         }
       };
