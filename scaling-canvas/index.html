@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <title>Webdev Toolbox | Scaling Canvas</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <style>
+    *,
+    *:before,
+    *:after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="scaling-canvas" width="300" height="300"></canvas>
+  <script type="text/javascript">
+    const canvas = document.getElementById('scaling-canvas');
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = `${rect.width}px`;
+    canvas.style.height = `${rect.height}px`;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.moveTo(100, 100);
+    ctx.lineTo(200, 200);
+    ctx.stroke();
+    ctx.closePath();
+
+    const renderLegend = function(list) {
+      var result = '';
+      for (var li of list) {
+        result += renderLegendItem(li.label, li.value);
+      }
+      return `<ul>${result}</ul>`;
+    }
+    const renderLegendItem = function(label, value) {
+      return `<li><span class="label">${label}</span>: ${value}</li>`;
+    }
+
+    const legendList = [
+      { label: 'Device Pixel Ratio', value: dpr },
+      { label: 'BoundingClientRect Width', value: rect.width },
+      { label: 'BoundingClientRect Height', value: rect.height },
+      { label: 'Canvas Internal Width', value: canvas.width },
+      { label: 'Canvas Internal Height', value: canvas.height},
+      { label: 'Canvas CSS Width', value: canvas.style.width },
+      { label: 'Canvas CSS Height', value: canvas.style.height },
+    ];
+    const legendEl = document.createElement('section');
+    legendEl.innerHTML = renderLegend(legendList);
+
+    document.body.append(legendEl);
+  </script>
+</body>
+</html>
