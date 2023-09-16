@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+  <title>Webdev Toolbox | Flashcard By Voice</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <style>
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      font-family: Helvetica, arial, sans-serif;
+      font-size: calc(48px + (128 - 48) * ((100vw - 300px) / (1600 - 300)));
+      color: #fafafa;
+      background-color: #333333;
+    }
+    .flashcard {
+      background-color: transparent;
+      height: 100%;
+      width: 100%;
+      perspective: 1000px;
+    }
+    .answer-transcript.wrong-answer {
+      color: #993333;
+      animation: wrong 0.2s ease-in-out 0.2s 2;
+    }
+    .answer-transcript .right-answer {
+      color: #339933;
+    }
+    .flashcard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .flashcard.flipped .flashcard-inner {
+      transform: rotateX(180deg);
+    }
+    .flashcard-front, .flashcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+    .flashcard-front, .flashcard-back {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .flashcard-listening {
+      width: 100%;
+      font-size: 24px;
+      color: #939393;
+    }
+    .flashcard-back {
+      transform: rotateX(180deg);
+    }
+
+    @keyframes wrong {
+      0% {
+        margin-left: 0rem;
+      }
+      25% {
+        margin-left: 0.5rem;
+      }
+      75% {
+        margin-left: -0.5rem;
+      }
+      100% {
+        margin-left: 0rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="flashcard-container" class="flashcard">
+    <div class="flashcard-inner">
+      <div class="flashcard-front">
+        <p class="flashcard-question">What is the capital of Pennsylvania?</p>
+        <div class="flashcard-listening">
+          <p class="answer-transcript">Tap to speak answer</p>
+        </div>
+      </div>
+      <div class="flashcard-back">
+        <p class="flashcard-answer">Harrisburg</p>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(event) {
+      qnas = [{
+        q: 'What is the capital of Pennsylvania?',
+        a: 'Harrisburg'
+      }, {
+        q: 'What is the capital of California?',
+        a: 'Sacremento'
+      }, {
+        q: 'What is the capital of Illinois?',
+        a: 'Springfield'
+      }, {
+        q: 'What is the capital of Washington?',
+        a: 'Olympia'
+      }, {
+        q: 'What is the capital of New York?',
+        a: 'Albany'
+      }];
+
+      fcc = document.getElementById('flashcard-container')
+      fcc.querySelector('.flashcard-front').addEventListener('click', () => {
+        recognition.start();
+      });
+
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      const SpeechGrammarList =
+        window.SpeechGrammarList || window.webkitSpeechGrammarList;
+      const SpeechRecognitionEvent =
+        window.SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent;
+
+      const grammar = `#JSGC V1.0; grammar qna; public <qna> = Harrisburg;`;
+      const recognition = new SpeechRecognition();
+      const speechRecognitionList = new SpeechGrammarList();
+      speechRecognitionList.addFromString(grammar, 1);
+      recognition.grammars = speechRecognitionList;
+      recognition.continuous = false;
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      const transcript = document.querySelector('.answer-transcript');
+      const pulse = document.querySelector('.pulse');
+
+      recognition.onaudiostart = (event) => {
+        transcript.textContent = 'Listening...';
+      };
+
+      recognition.onaudioend = (event) => {
+        console.log(event);
+        window.setTimeout(() => {
+          transcript.textContent = 'Tap to speak answer';
+          transcript.classList.remove('wrong-answer');
+        }, 1500);
+      };
+
+      recognition.onresult = (event) => {
+        const answer = event.results[0][0].transcript;
+        console.log(event);
+
+        rightAnswerIndex = answer.indexOf('Harrisburg');
+
+        if (rightAnswerIndex > -1) {
+          correctAnswerLength = 'Harrisburg'.length;
+          beforeAnswerString = answer.substring(0,rightAnswerIndex);
+          rightAnswerString = answer.substring(rightAnswerIndex,rightAnswerIndex+correctAnswerLength);
+          afterAnswerString = answer.substring(rightAnswerIndex+correctAnswerLength,rightAnswerIndex+correctAnswerLength+answer.length-1)
+
+          answerString = `${beforeAnswerString}<span class="right-answer">${rightAnswerString}</span>${afterAnswerString}`;
+          transcript.innerHTML = answerString;
+          window.setTimeout(() => {
+            fcc.classList.toggle('flipped');
+            window.setTimeout(() => {
+              fcc.classList.toggle('flipped');
+            }, 1500);
+          }, 1000);
+        } else {
+          transcript.textContent = answer;
+          transcript.classList.add('wrong-answer');
+        }
+      };
+
+      recognition.onspeechend = () => {
+        recognition.stop();
+      };
+
+      recognition.onerror = (event) => {
+        console.log(event);
+      };
+    });
+  </script>
+</body>
+</html>

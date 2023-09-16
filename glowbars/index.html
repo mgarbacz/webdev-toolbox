@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+  <title>Webdev Toolbox | Glowbars</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: Helvetica, arial, sans-serif;
+    font-size: 16px;
+    color: #333333;
+  }
+
+  section.build {
+    max-width: 944px;
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+  }
+  h1.build-header {
+    font-weight: 500;
+    font-size: 1.2em;
+  }
+
+  div.build-status-container {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+  }
+  div.build-status {
+    width: 25%;
+    margin: auto;
+  }
+
+  span.build-status-icon,
+  span.build-status-amount {
+    font-size: 34px;
+    font-weight: 100;
+    display: block;
+    padding: 15px 0;
+  }
+  div.errors   span.build-status-icon   { color: #DD444D; }
+  div.warnings span.build-status-icon   { color: #DDD554; }
+  div.passing  span.build-status-icon   { color: #44DD88; }
+  div.info     span.build-status-icon   { color: #44DDD5; }
+  div.disabled span.build-status-icon   { color: #E6E6E6; }
+  div.disabled span.build-status-amount { color: #E6E6E6; }
+
+  div.glowbar {
+    width: 150%;
+    margin-left: -25%;
+    height: 3px;
+    background-color: #E6E6E6;
+  }
+  div.errors div.glowbar {
+    background: linear-gradient(to right,
+      rgba(221,68,77,0) 0%,
+      rgba(221,68,77,1) 50%,
+      rgba(221,68,77,0) 100%);
+  }
+  div.warnings div.glowbar {
+    background: linear-gradient(to right,
+      rgba(221,213,68,0) 0%,
+      rgba(221,213,68,1) 50%,
+      rgba(221,213,68,0) 100%);
+  }
+  div.passing div.glowbar {
+    background: linear-gradient(to right,
+      rgba(68,221,136,0) 0%,
+      rgba(68,221,136,1) 50%,
+      rgba(68,221,136,0) 100%);
+  }
+  div.info div.glowbar {
+    background: linear-gradient(to right,
+      rgba(68,221,213,0) 0%,
+      rgba(68,221,213,1) 50%,
+      rgba(68,221,213,0) 100%);
+  }
+  div.disabled div.glowbar {
+    background: linear-gradient(to right,
+      rgba(230,230,230,0) 0%,
+      rgba(230,230,230,1) 50%,
+      rgba(230,230,230,0) 100%);
+  }
+  </style>
+</head>
+<body>
+  <section class="build">
+    <h1 class="build-header">Super Active Project</h1>
+    <div class="build-status-container">
+      <div class="build-status errors">
+        <span class="build-status-icon">
+          <i class="fa fa-minus-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">2</span>
+      </div>
+      <div class="build-status warnings">
+        <span class="build-status-icon">
+          <i class="fa fa-exclamation-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">5</span>
+      </div>
+      <div class="build-status passing">
+        <span class="build-status-icon">
+          <i class="fa fa-check-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">29</span>
+      </div>
+      <div class="build-status info">
+        <span class="build-status-icon">
+          <i class="fa fa-info-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">1</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="build">
+    <h1 class="build-header">Happy Project</h1>
+    <div class="build-status-container">
+      <div class="build-status errors disabled">
+        <span class="build-status-icon">
+          <i class="fa fa-minus-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">0</span>
+      </div>
+      <div class="build-status warnings disabled">
+        <span class="build-status-icon">
+          <i class="fa fa-exclamation-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">0</span>
+      </div>
+      <div class="build-status passing">
+        <span class="build-status-icon">
+          <i class="fa fa-check-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">39</span>
+      </div>
+      <div class="build-status info disabled">
+        <span class="build-status-icon">
+          <i class="fa fa-info-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">0</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="build">
+    <h1 class="build-header">Angry Project</h1>
+    <div class="build-status-container">
+      <div class="build-status errors">
+        <span class="build-status-icon">
+          <i class="fa fa-minus-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">18</span>
+      </div>
+      <div class="build-status warnings">
+        <span class="build-status-icon">
+          <i class="fa fa-exclamation-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">7</span>
+      </div>
+      <div class="build-status passing disabled">
+        <span class="build-status-icon">
+          <i class="fa fa-check-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">0</span>
+      </div>
+      <div class="build-status info">
+        <span class="build-status-icon">
+          <i class="fa fa-info-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">7</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="build">
+    <h1 class="build-header">Clean Slate Project</h1>
+    <div class="build-status-container">
+      <div class="build-status errors disabled">
+        <span class="build-status-icon">
+          <i class="fa fa-minus-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">0</span>
+      </div>
+      <div class="build-status warnings disabled">
+        <span class="build-status-icon">
+          <i class="fa fa-exclamation-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">0</span>
+      </div>
+      <div class="build-status passing disabled">
+        <span class="build-status-icon">
+          <i class="fa fa-check-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">0</span>
+      </div>
+      <div class="build-status info disabled">
+        <span class="build-status-icon">
+          <i class="fa fa-info-circle"></i>
+        </span>
+        <div class="glowbar"></div>
+        <span class="build-status-amount">0</span>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
