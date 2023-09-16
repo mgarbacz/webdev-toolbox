@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>Webdev Toolbox | Scaling Canvas</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="viewport" 
+        content="width=device-width,initial-scale=1,maximum-scale=1">
   <style>
     *,
     *:before,
@@ -18,11 +19,29 @@
     ul {
       list-style-type: none;
     }
+    canvas {
+      border: 1px solid black;
+    }
     .container {
       display: flex;
       flex-direction: row;
-      margin: 10px auto;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .container div {
       padding: 10px;
+    }
+    @media (min-width: 641px) and
+           (max-width: 960px) {
+      .container {
+        flex-wrap: wrap;
+      }
+    }
+    @media (max-width: 640px) {
+      .container {
+        flex-direction: column;
+
+      }
     }
   </style>
   <script type="text/javascript" src="index.js"></script>
@@ -33,8 +52,8 @@
     const container = document.getElementById('container');
 
     container.append(renderCanvas('With DPR, With Scaling', true, true));
-    container.append(renderCanvas('With DPR, Without Scaling', true, false));
-    container.append(renderCanvas('Without DPR, Without Scaling', false, false));
+    container.append(renderCanvas('W/o DPR, W/o Scaling', false, false));
+    container.append(renderCanvas('With DPR, W/o Scaling', true, false));
   </script>
 </body>
 </html>
