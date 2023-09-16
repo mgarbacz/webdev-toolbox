@@ -24,6 +24,7 @@ const renderCanvas = function(label, enableDPR, enableScaling) {
   ctx.beginPath();
   ctx.moveTo(100, 100);
   ctx.lineTo(200, 200);
+  ctx.arc(200, 150, 50, Math.PI / 2, Math.PI * 3/2, true);
   ctx.stroke();
   ctx.closePath();
 
@@ -48,7 +49,7 @@ const renderCanvas = function(label, enableDPR, enableScaling) {
   const legendEl = document.createElement('section');
   legendEl.innerHTML = renderLegend(legendList);
 
-  container.append(label);
+  container.append(labelEl);
   container.append(canvas);
   container.append(legendEl);
 
