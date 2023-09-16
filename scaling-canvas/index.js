@@ -20,11 +20,12 @@ const renderCanvas = function(label, enableDPR, enableScaling) {
   if (enableScaling) {
     ctx.scale(dpr, dpr);
   }
-  ctx.lineWidth = 5;
+  ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.moveTo(100, 100);
   ctx.lineTo(200, 200);
   ctx.arc(200, 150, 50, Math.PI / 2, Math.PI * 3/2, true);
+  ctx.lineTo(100, 100);
   ctx.stroke();
   ctx.closePath();
 
