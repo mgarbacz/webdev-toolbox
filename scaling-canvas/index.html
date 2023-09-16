@@ -15,51 +15,26 @@
       width: 100%;
       height: 100%;
     }
+    ul {
+      list-style-type: none;
+    }
+    .container {
+      display: flex;
+      flex-direction: row;
+      margin: 10px auto;
+      padding: 10px;
+    }
   </style>
+  <script type="text/javascript" src="index.js"></script>
 </head>
 <body>
-  <canvas id="scaling-canvas" width="300" height="300"></canvas>
+  <div id="container" class="container"></div>
   <script type="text/javascript">
-    const canvas = document.getElementById('scaling-canvas');
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    canvas.style.width = `${rect.width}px`;
-    canvas.style.height = `${rect.height}px`;
-    const ctx = canvas.getContext('2d');
-    ctx.scale(dpr, dpr);
-    ctx.lineWidth = 5;
-    ctx.beginPath();
-    ctx.moveTo(100, 100);
-    ctx.lineTo(200, 200);
-    ctx.stroke();
-    ctx.closePath();
+    const container = document.getElementById('container');
 
-    const renderLegend = function(list) {
-      var result = '';
-      for (var li of list) {
-        result += renderLegendItem(li.label, li.value);
-      }
-      return `<ul>${result}</ul>`;
-    }
-    const renderLegendItem = function(label, value) {
-      return `<li><span class="label">${label}</span>: ${value}</li>`;
-    }
-
-    const legendList = [
-      { label: 'Device Pixel Ratio', value: dpr },
-      { label: 'BoundingClientRect Width', value: rect.width },
-      { label: 'BoundingClientRect Height', value: rect.height },
-      { label: 'Canvas Internal Width', value: canvas.width },
-      { label: 'Canvas Internal Height', value: canvas.height},
-      { label: 'Canvas CSS Width', value: canvas.style.width },
-      { label: 'Canvas CSS Height', value: canvas.style.height },
-    ];
-    const legendEl = document.createElement('section');
-    legendEl.innerHTML = renderLegend(legendList);
-
-    document.body.append(legendEl);
+    container.append(renderCanvas('With DPR, With Scaling', true, true));
+    container.append(renderCanvas('With DPR, Without Scaling', true, false));
+    container.append(renderCanvas('Without DPR, Without Scaling', false, false));
   </script>
 </body>
 </html>
