@@ -3,20 +3,20 @@
   <title>Webdev Toolbox | Color Design</title>
   <style>
     :root {
-      --brand-color-hex: #009999;
-      --brand-color-100: hsl(170, 45%, 90%);
-      --brand-color-300: hsl(170, 70%, 70%);
-      --brand-color-500: hsl(170, 70%, 45%);
-      --brand-color-700: hsl(170, 85%, 30%);
-      --brand-color-900: hsl(170, 100%, 10%);
+      --color-brand-hex: #009999;
+      --color-brand-100: hsl(170, 45%, 90%);
+      --color-brand-300: hsl(170, 70%, 70%);
+      --color-brand-500: hsl(170, 70%, 45%);
+      --color-brand-700: hsl(170, 85%, 30%);
+      --color-brand-900: hsl(170, 100%, 10%);
 
-      --dark-color-500:     #3d3c37;
-      --light-color-500:    #f7f7e6;
+      --color-dark-500:     #3d3c37;
+      --color-light-500:    #f7f7e6;
       
-      --success-color-500:  hsl(155, 75%, 45%);
-      --warning-color-500:  hsl(45, 75%, 45%);
-      --danger-color-500:   hsl(7, 75%, 45%);
-      --info-color-500:     hsl(178, 75%, 45%);
+      --color-success-500:  hsl(155, 75%, 45%);
+      --color-warning-500:  hsl(45, 75%, 45%);
+      --color-danger-500:   hsl(7, 75%, 45%);
+      --color-info-500:     hsl(178, 75%, 45%);
 
       --accent-color-dm-1: #f46f6f;
       --accent-color-dm-2: #7dd4df;
@@ -46,7 +46,7 @@
 </head>
 <body>
   <main id="main-content">
-    <div class="color-swatch" style="background-color: var(--brand-color-hex);"></div>
+    <div class="color-swatch" style="background-color: var(--color-brand-hex);"></div>
     <div class="color-swatch" style="background-color: var(--accent-color-dm-1);"></div>
     <div class="color-swatch" style="background-color: var(--accent-color-dm-2);"></div>
     <div class="color-swatch" style="background-color: var(--accent-color-lm-1);"></div>
@@ -81,13 +81,13 @@
     document.addEventListener("DOMContentLoaded", function() {
       const main = document.getElementById('main-content');
 
-      main.appendChild(htmlToElement(colorSwatchRender("brand-color")));
-      main.appendChild(htmlToElement(colorSwatchRender("success-color")));
-      main.appendChild(htmlToElement(colorSwatchRender("warning-color")));
-      main.appendChild(htmlToElement(colorSwatchRender("danger-color")));
-      main.appendChild(htmlToElement(colorSwatchRender("info-color")));
-      main.appendChild(htmlToElement(colorSwatchRender("dark-color")));
-      main.appendChild(htmlToElement(colorSwatchRender("light-color")));
+      main.appendChild(htmlToElement(colorSwatchRender("color-brand")));
+      main.appendChild(htmlToElement(colorSwatchRender("color-success")));
+      main.appendChild(htmlToElement(colorSwatchRender("color-warning")));
+      main.appendChild(htmlToElement(colorSwatchRender("color-danger")));
+      main.appendChild(htmlToElement(colorSwatchRender("color-info")));
+      main.appendChild(htmlToElement(colorSwatchRender("color-dark")));
+      main.appendChild(htmlToElement(colorSwatchRender("color-light")));
     });
   </script>
 </body>
