@@ -3,7 +3,14 @@
   <title>Webdev Toolbox | Color Design</title>
   <style>
     :root {
-      --color-brand-hex: #009999;
+      --color-dark: #3d3c37;
+      --color-light: #f7f7e6;
+      --color-brand: #009999;
+      --color-accent-1-dm: #f46f6f;
+      --color-accent-2-dm: #7dd4df;
+      --color-accent-1-lm: #d3393d;
+      --color-accent-2-lm: #4b6083;
+
       --color-brand-100: hsl(170, 45%, 90%);
       --color-brand-200: hsl(170, 60%, 80%);
       --color-brand-300: hsl(170, 70%, 70%);
@@ -54,18 +61,25 @@
       --color-info-800: hsl(178, 80%, 20%);
       --color-info-900: hsl(178, 95%, 10%);
 
-      --color-dark-500: #3d3c37;
-      --color-light-500: #f7f7e6;
+      --color-indexcardpink-100: hsl(345, 19%, 95%);
+      --color-indexcardpink-200: hsl(345, 34%, 85%);
+      --color-indexcardpink-300: hsl(345, 44%, 75%);
+      --color-indexcardpink-400: hsl(345, 44%, 65%);
+      --color-indexcardpink-500: hsl(345, 49%, 55%);
+      --color-indexcardpink-600: hsl(345, 44%, 45%);
+      --color-indexcardpink-700: hsl(345, 44%, 35%);
+      --color-indexcardpink-800: hsl(345, 54%, 25%);
+      --color-indexcardpink-900: hsl(345, 69%, 15%);
 
-      --color-indexcardpink-100: #cbb3b8;
-      --color-indexcardpink-300: #b2929a;
-      --color-indexcardpink-500: #f46f6f;
-      --color-indexcardpink-700: #d3393d;
-
-      --color-indexcardblue-100: #c4dae3;
-      --color-indexcardblue-300: #accddd;
-      --color-indexcardblue-500: #7dd4df;
-      --color-indexcardblue-700: #4b6083;
+      --color-indexcardblue-100: hsl(200, 36%, 93%);
+      --color-indexcardblue-200: hsl(200, 51%, 83%);
+      --color-indexcardblue-300: hsl(200, 61%, 73%);
+      --color-indexcardblue-400: hsl(200, 61%, 63%);
+      --color-indexcardblue-500: hsl(200, 66%, 53%);
+      --color-indexcardblue-600: hsl(200, 61%, 43%);
+      --color-indexcardblue-700: hsl(200, 61%, 33%);
+      --color-indexcardblue-800: hsl(200, 71%, 23%);
+      --color-indexcardblue-900: hsl(200, 86%, 13%);
     }
     main {
       display: flex;
@@ -85,7 +99,13 @@
 </head>
 <body>
   <main id="main-content">
-    <div class="color-swatch" style="background-color: var(--color-brand-hex);"></div>
+    <div class="color-swatch" style="background-color: var(--color-accent-1-dm);"></div>
+    <div class="color-swatch" style="background-color: var(--color-dark);"></div>
+    <div class="color-swatch" style="background-color: var(--color-accent-2-dm);"></div>
+    <div class="color-swatch" style="background-color: var(--color-brand);"></div>
+    <div class="color-swatch" style="background-color: var(--color-accent-1-lm);"></div>
+    <div class="color-swatch" style="background-color: var(--color-light);"></div>
+    <div class="color-swatch" style="background-color: var(--color-accent-2-lm);"></div>
   </main>
   <script type="text/javascript">
     const htmlToElement = function(html) {
@@ -117,8 +137,6 @@
       main.appendChild(htmlToElement(colorSwatchRender("color-warning")));
       main.appendChild(htmlToElement(colorSwatchRender("color-danger")));
       main.appendChild(htmlToElement(colorSwatchRender("color-info")));
-      main.appendChild(htmlToElement(colorSwatchRender("color-dark")));
-      main.appendChild(htmlToElement(colorSwatchRender("color-light")));
       main.appendChild(htmlToElement(colorSwatchRender("color-indexcardpink")));
       main.appendChild(htmlToElement(colorSwatchRender("color-indexcardblue")));
     });
