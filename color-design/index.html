@@ -18,15 +18,15 @@
       --color-danger-500:   hsl(7, 75%, 45%);
       --color-info-500:     hsl(178, 75%, 45%);
 
-      --accent-color-dm-1: #f46f6f;
-      --accent-color-dm-2: #7dd4df;
-      --accent-color-lm-1: #d3393d;
-      --accent-color-lm-2: #4b6083;
+      --color-indexcardpink-100: #cbb3b8;
+      --color-indexcardpink-300: #b2929a;
+      --color-indexcardpink-500: #f46f6f;
+      --color-indexcardpink-700: #d3393d;
 
-      --index-card-pink-lm: #b2929a;
-      --index-card-blue-lm: #accddd;
-      --index-card-pink-dm: #cbb3b8;
-      --index-card-blue-dm: #c4dae3;
+      --color-indexcardblue-100: #c4dae3;
+      --color-indexcardblue-300: #accddd;
+      --color-indexcardblue-500: #7dd4df;
+      --color-indexcardblue-700: #4b6083;
     }
     main {
       display: flex;
@@ -35,7 +35,7 @@
     .color-swatch {
       display: flex;
       flex-direction: column;
-      height: 200px;
+      height: 300px;
       width: 100%;
     }
     .color-box {
@@ -47,14 +47,6 @@
 <body>
   <main id="main-content">
     <div class="color-swatch" style="background-color: var(--color-brand-hex);"></div>
-    <div class="color-swatch" style="background-color: var(--accent-color-dm-1);"></div>
-    <div class="color-swatch" style="background-color: var(--accent-color-dm-2);"></div>
-    <div class="color-swatch" style="background-color: var(--accent-color-lm-1);"></div>
-    <div class="color-swatch" style="background-color: var(--accent-color-lm-2);"></div>
-    <div class="color-swatch" style="background-color: var(--index-card-blue-dm);"></div>
-    <div class="color-swatch" style="background-color: var(--index-card-pink-dm);"></div>
-    <div class="color-swatch" style="background-color: var(--index-card-blue-lm);"></div>
-    <div class="color-swatch" style="background-color: var(--index-card-pink-lm);"></div>
   </main>
   <script type="text/javascript">
     const htmlToElement = function(html) {
@@ -88,6 +80,8 @@
       main.appendChild(htmlToElement(colorSwatchRender("color-info")));
       main.appendChild(htmlToElement(colorSwatchRender("color-dark")));
       main.appendChild(htmlToElement(colorSwatchRender("color-light")));
+      main.appendChild(htmlToElement(colorSwatchRender("color-indexcardpink")));
+      main.appendChild(htmlToElement(colorSwatchRender("color-indexcardblue")));
     });
   </script>
 </body>
