@@ -3,47 +3,92 @@
   <title>Webdev Toolbox | Color Design</title>
   <style>
     :root {
-      --brand-color: #009999;
-      --brand-color-2: #05575c;
-      --brand-color-3: #328f70;
+      --brand-color-hex: #009999;
+      --brand-color-100: hsl(170, 45%, 90%);
+      --brand-color-300: hsl(170, 70%, 70%);
+      --brand-color-500: hsl(170, 70%, 45%);
+      --brand-color-700: hsl(170, 85%, 30%);
+      --brand-color-900: hsl(170, 100%, 10%);
 
-      --dark-color:     #3d3c37;
-      --light-color:    #f7f7e6;
+      --dark-color-500:     #3d3c37;
+      --light-color-500:    #f7f7e6;
+      
+      --success-color-500:  hsl(155, 75%, 45%);
+      --warning-color-500:  hsl(45, 75%, 45%);
+      --danger-color-500:   hsl(7, 75%, 45%);
+      --info-color-500:     hsl(178, 75%, 45%);
+
       --accent-color-dm-1: #f46f6f;
       --accent-color-dm-2: #7dd4df;
-
       --accent-color-lm-1: #d3393d;
       --accent-color-lm-2: #4b6083;
 
       --index-card-pink-lm: #b2929a;
-      --index-card-pink-dm: #cbb3b8;
       --index-card-blue-lm: #accddd;
+      --index-card-pink-dm: #cbb3b8;
       --index-card-blue-dm: #c4dae3;
     }
     main {
       display: flex;
       flex-direction: row;
     }
-    .color-box {
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
       height: 200px;
+      width: 100%;
+    }
+    .color-box {
+      height: 100%;
       width: 100%;
     }
   </style>
 </head>
 <body>
-  <main>
-    <div class="color-box" style="background-color: var(--brand-color);"></div>
-    <div class="color-box" style="background-color: var(--brand-color-2);"></div>
-    <div class="color-box" style="background-color: var(--brand-color-3);"></div>
-    <div class="color-box" style="background-color: var(--dark-color);"></div>
-    <div class="color-box" style="background-color: var(--light-color);"></div>
-    <div class="color-box" style="background-color: var(--accent-color-lm-1);"></div>
-    <div class="color-box" style="background-color: var(--accent-color-lm-2);"></div>
-    <div class="color-box" style="background-color: var(--accent-color-lm-1);"></div>
-    <div class="color-box" style="background-color: var(--accent-color-lm-2);"></div>
-    <div class="color-box" style="background-color: var(--index-card-blue-dm);"></div>
-    <div class="color-box" style="background-color: var(--index-card-pink-dm);"></div>
-    <div class="color-box" style="background-color: var(--index-card-blue-lm);"></div>
-    <div class="color-box" style="background-color: var(--index-card-pink-lm);"></div>
+  <main id="main-content">
+    <div class="color-swatch" style="background-color: var(--brand-color-hex);"></div>
+    <div class="color-swatch" style="background-color: var(--accent-color-dm-1);"></div>
+    <div class="color-swatch" style="background-color: var(--accent-color-dm-2);"></div>
+    <div class="color-swatch" style="background-color: var(--accent-color-lm-1);"></div>
+    <div class="color-swatch" style="background-color: var(--accent-color-lm-2);"></div>
+    <div class="color-swatch" style="background-color: var(--index-card-blue-dm);"></div>
+    <div class="color-swatch" style="background-color: var(--index-card-pink-dm);"></div>
+    <div class="color-swatch" style="background-color: var(--index-card-blue-lm);"></div>
+    <div class="color-swatch" style="background-color: var(--index-card-pink-lm);"></div>
   </main>
+  <script type="text/javascript">
+    const htmlToElement = function(html) {
+      let template = document.createElement('template');
+      html = html.trim();
+      template.innerHTML = html;
+      return template.content.firstChild;
+    };
+    const colorBoxRender = function(name, weight) {
+      return `
+        <div 
+          class="color-swatch"
+          style="background-color: var(--${name}-${weight});">
+        </div>`;
+    };
+    const colorSwatchRender = function(name) {
+      let colorBoxHtml = `<div class="color-swatch">`;
+      for (let i = 1; i < 10; i++) {
+        colorBoxHtml += colorBoxRender(name, i * 100);
+      }
+      return colorBoxHtml + '</div>';
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const main = document.getElementById('main-content');
+
+      main.appendChild(htmlToElement(colorSwatchRender("brand-color")));
+      main.appendChild(htmlToElement(colorSwatchRender("success-color")));
+      main.appendChild(htmlToElement(colorSwatchRender("warning-color")));
+      main.appendChild(htmlToElement(colorSwatchRender("danger-color")));
+      main.appendChild(htmlToElement(colorSwatchRender("info-color")));
+      main.appendChild(htmlToElement(colorSwatchRender("dark-color")));
+      main.appendChild(htmlToElement(colorSwatchRender("light-color")));
+    });
+  </script>
 </body>
+</html>
