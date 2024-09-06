@@ -1,0 +1,102 @@
+:root {
+  --bg-color: #333333;
+  --fg-color: #fafafa;
+  --primary-color: #1c79d6;
+  --valid-color: #1cd679;
+  --error-color: #d61c79;
+  --focus-color: var(--primary-color);
+  --input-padding: 15px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.form-control {
+  position: relative;
+  margin: 10px auto;
+}
+
+.form-control input,
+.form-button {
+  width: 350px;
+  border-radius: 6px;
+  font-size: 18px;
+}
+
+.form-control input {
+  height: 60px;
+  padding: 0 var(--input-padding);
+  border: 2px solid var(--fg-color);
+  background: transparent;
+  outline: none;
+  color: var(--fg-color);
+  font-family: inherit;
+}
+
+.form-control label {
+  position: absolute;
+  top: 50%;
+  left: var(--input-padding);
+  transform: translateY(-50%);
+  color: var(--fg-color);
+  font-size: 19px;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.form-control input:focus {
+  border: 2px solid var(--focus-color);
+}
+
+.form-control input:valid {
+  border: 2px solid var(--valid-color);
+}
+
+.form-control input.form-control-error {
+  border: 2px solid var(--error-color);
+}
+
+.form-control input:focus + label,
+.form-control input:valid + label,
+.form-control input:not(:placeholder-shown) + label {
+  top: 0;
+  font-size: 16px;
+  padding: 0 10px;
+  background-color: var(--bg-color);
+}
+
+.form-button {
+  cursor: pointer;
+  color: var(--fg-color);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  display: inline-block;
+  height: 45px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  transition: filter .15s ease-in-out;
+}
+
+.form-button:hover {
+  filter: brightness(85%);
+}
